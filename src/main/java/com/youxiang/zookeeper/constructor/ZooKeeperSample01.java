@@ -1,4 +1,4 @@
-package com.youxiang.zookeeper;
+package com.youxiang.zookeeper.constructor;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -11,7 +11,7 @@ import java.util.concurrent.CountDownLatch;
  * @author: Rivers
  * @date: 2018/4/17
  */
-public class ZooKeeperSample02 implements Watcher {
+public class ZooKeeperSample01 implements Watcher {
 
     private static CountDownLatch latch = new CountDownLatch(1);
 
@@ -20,11 +20,8 @@ public class ZooKeeperSample02 implements Watcher {
             ZooKeeper keeper = new ZooKeeper("ip:2181", 5000, new ZooKeeperSample01());
             System.out.println(keeper.getState());
             latch.await();
-            long sessionId = keeper.getSessionId();
-            byte[] sessionPwd = keeper.getSessionPasswd();
-            keeper = new ZooKeeper("ip:2181", 5000, new ZooKeeperSample02(), 1l, "test".getBytes());
-            keeper = new ZooKeeper("ip.2181", 5000, new ZooKeeperSample02(), sessionId, sessionPwd);
-//            keeper.close();
+            System.out.println("ZooKeeper connection extablished!");
+            keeper.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException ex) {
