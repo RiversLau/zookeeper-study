@@ -4,7 +4,7 @@ package com.youxiang.zookeeper;
  * @author: Rivers
  * @date: 2018/4/18
  */
-public class ZooKeeperApi {
+public class ZKApi {
 
     public static final String CONNETION_STRING = "ip:2181";
 

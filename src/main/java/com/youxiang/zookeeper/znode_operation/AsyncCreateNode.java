@@ -1,9 +1,8 @@
-package com.youxiang.zookeeper.create_node;
+package com.youxiang.zookeeper.znode_operation;
 
-import com.youxiang.zookeeper.ZooKeeperApi;
+import com.youxiang.zookeeper.ZKApi;
 import org.apache.zookeeper.*;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -16,7 +15,7 @@ public class AsyncCreateNode implements Watcher {
 
     public static void main(String[] args) {
         try {
-            ZooKeeper zooKeeper = new ZooKeeper(ZooKeeperApi.CONNETION_STRING, ZooKeeperApi.SESSION_TIMEOUT, new AsyncCreateNode());
+            ZooKeeper zooKeeper = new ZooKeeper(ZKApi.CONNETION_STRING, ZKApi.SESSION_TIMEOUT, new AsyncCreateNode());
             latch.await();
 
             zooKeeper.create("/zk-test-ephemeral-", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL, new IStringCallback(), "I am context.");
