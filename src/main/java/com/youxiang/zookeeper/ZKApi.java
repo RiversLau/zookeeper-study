@@ -6,7 +6,7 @@ package com.youxiang.zookeeper;
  */
 public class ZKApi {
 
-    public static final String CONNETION_STRING = "ip:2181";
+    public static final String CONNETION_STRING = "120.77.177.184:2181";
 
     public static final Integer SESSION_TIMEOUT = 5000;
 }
